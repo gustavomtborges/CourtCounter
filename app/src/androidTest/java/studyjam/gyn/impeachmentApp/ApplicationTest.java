@@ -1,4 +1,4 @@
-package studyjam.gyn.courtcounter;
+package studyjam.gyn.impeachmentApp;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

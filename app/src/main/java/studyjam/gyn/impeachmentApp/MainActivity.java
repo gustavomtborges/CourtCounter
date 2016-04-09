@@ -1,4 +1,4 @@
-package studyjam.gyn.courtcounter;
+package studyjam.gyn.impeachmentApp;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,9 +7,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import java.text.NumberFormat;
-
 public class MainActivity extends AppCompatActivity {
+
+    int votePro = 352;
+    int voteCon = 170;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,20 +40,31 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void submitOrder(View view) {
-        int quantity = 2;
-        display(quantity);
-        displayPrice(quantity * 5);
+    public void submitVotePro(View view) {
+        votePro = votePro + 1;
+        displayForPro(votePro);
 
     }
 
-    private void display(int number) {
-        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
-        quantityTextView.setText("" + number);
+    public void submitVoteCon(View view) {
+        voteCon = voteCon + 1;
+        displayForCon(voteCon);
     }
 
-    private void displayPrice(int number) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
+    public void resetVote(View view) {
+        displayForPro(0);
+        displayForCon(0);
+        votePro = 0;
+        voteCon = 0;
+    }
+
+    private void displayForPro(int number) {
+        TextView voteProTextView = (TextView) findViewById(R.id.votePro_text_view);
+        voteProTextView.setText(String.valueOf(number));
+    }
+
+    private void displayForCon(int number) {
+        TextView voteConTextView = (TextView) findViewById(R.id.voteCon_text_view);
+        voteConTextView.setText(String.valueOf(number));
     }
 }
